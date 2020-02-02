@@ -385,5 +385,8 @@ textarea.input100 {
   }
 }
 
+#new-post-form {
+  background-image: url('../static/bg-01.jpg')
+}
 
 

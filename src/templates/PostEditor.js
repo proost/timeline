@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {FormOnSubmitAuthor,ButtonAuthorToggle} from './Author';
 
 export default class PostEditor extends Component {
 
@@ -58,8 +57,6 @@ export default class PostEditor extends Component {
         if (this.props.isModify) {
             return(
                 <div className="notes-app">
-                    <FormOnSubmitAuthor onAuthorSet={this.setAuthor} isAuthorChange={this.state.isAuthorChange} ></FormOnSubmitAuthor>
-                    <ButtonAuthorToggle isAuthorChange={this.state.isAuthorChange} author={this.state.author} onAuthorSet={this.setAuthor} ></ButtonAuthorToggle>
                     <h2 className="app-header">Posts App</h2>
                 <div className="note-editor">
                     <textarea

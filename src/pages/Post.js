@@ -1,27 +1,23 @@
-import React, { Component } from 'react'
-import BoardRouter from '../board/BoardRouter'
+import React from 'react'
+import BoardRouter from '../BoardRouter'
+import { MenuBar } from '../templates/Header'
+import ErrorHandler from './Error'
 import '../styles/main.css'
 import '../styles/util.css'
 
 const boardRouter = new BoardRouter()
 
-export default class Post extends Component {
+class Post extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-        contents : '',
-        author: ''
+      contents : '',
+      author: '',
+      error: null
     }
 
-    this.handlePostAdd = this.handlePostAdd.bind(this)
-    this.handleAuthorChange = this.handleAuthorChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleContentsChange = this.handleContentsChange.bind(this)
-  }
-
-  handleAuthorChange(event){
-    this.setState({
-      author: event.target.value
-    })
   }
 
   handleContentsChange(event){
@@ -30,47 +26,56 @@ export default class Post extends Component {
     })
   }
 
-  handlePostAdd(){
-    boardRouter.createPost({
-      "author": this.state.author,
-      "contents": this.state.contents
-    }).then((response) => {
-        alert("Success!!")
-        this.setState({ 
-            author: '',
-            contents: ''
-        })
-      }).catch(() => {
-        alert("There was an error!!!")
+  async handleSubmit(){
+    try {
+      let res = await boardRouter.createPost({
+        "author": this.state.author,
+        "contents": this.state.contents
       })
+      this.setState({ 
+        author: '', contents: ''
+      })
+    } catch(error) {
+      this.setState({error: error})
+    }
   }
 
-  render(){
+  render() {
+    if (this.state.error) {
+      return (
+        <div>
+          <ErrorHandler error={this.state.error}/>
+        </div>
+      )
+    }
     return (
-      <div class="container-contact100">
-        <div class="wrap-contact100">
-          <form class="contact100-form validate-form">
-            <span class="contact100-form-title">
-              Create New Post
-            </span>
-            <div class="wrap-input100 validate-input">
-              <input  class="input100" type="text" placeholder="Author" onChange={this.handleAuthorChange}></input>
-                <span class="focus-input100"></span>
-            </div>
-      
-            <div class="wrap-input100 validate-input" data-validate = "Message is required">
-              <textarea class="input100" name="message" placeholder="Enter your Message" onChange={this.handleContentsChange}></textarea>
-                <span class="focus-input100"></span>
-            </div>
-      
-            <div class="container-contact100-form-btn">
-              <button class="contact100-form-btn" onClick={this.handlePostAdd}>
-                Submit Post
-              </button>
-            </div>
-          </form>
+      <div>
+        <MenuBar/>
+        <div class="container-contact100" id="new-post-form">
+          <div class="wrap-contact100">
+            <form class="contact100-form validate-form" onSubmit={this.handleSubmit}>
+              <span class="contact100-form-title">
+                새로운 포스트
+              </span>
+              <div class="wrap-input100 validate-input">
+                <textarea 
+                  class="input100"
+                  name="message"
+                  placeholder="Enter your Message"
+                  onChange={this.handleContentsChange}/>
+                  <span class="focus-input100"></span>
+              </div>
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn">
+                  포스팅
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     )
   }
 }
+
+export default Post
