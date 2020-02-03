@@ -28,7 +28,7 @@ class Post extends React.Component {
 
   async handleSubmit(){
     try {
-      let res = await boardRouter.createPost({
+      await boardRouter.createPost({
         "author": this.state.author,
         "contents": this.state.contents
       })
