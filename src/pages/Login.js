@@ -1,15 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
+import LoginForm from '../templates/LoginForm'
+import ErrorHandler from '../pages/Error'
 
-import { MenuBar } from '../templates/Header'
-import  PostForm  from '../templates/PostForm'
-import ErrorHandler from './Error'
-
-import '../styles/main.css'
+import '../styles/login.css'
 import '../styles/util.css'
 
-class Post extends React.Component {
-  constructor(props){
+export default class Login extends Component {
+  constructor(props) {
     super(props)
+
     this.state = {
       error: null
     }
@@ -28,15 +27,12 @@ class Post extends React.Component {
           <ErrorHandler error={this.state.error}/>
         </div>
       )
-    } else {
+    } else {    
       return (
         <div>
-          <MenuBar/>
-          <PostForm handleError={this.handleNetworkError}/>
+          <LoginForm handleError={this.handleNetworkError}/>
         </div>
       )
     }
   }
-}
-
-export default Post
+} 
