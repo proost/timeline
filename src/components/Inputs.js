@@ -2,10 +2,11 @@ import React from 'react'
 
 export function Textarea(props) {
   return (
-    <textarea
-      class="input100"
-      placeholder="Enter your Message"
-      onChange={props.handleChange}/>
+    <div class="field">
+      <textarea 
+        rows="3"
+        onChange={props.onChange}></textarea>
+    </div>
   )
 }
 
@@ -23,6 +24,17 @@ export function PasswordForm(props) {
     <div class="wrap-input100">
       <input class="input100" type="password" placeholder={props.placeholder} onChange={props.handleChange}/>
       <span class="focus-input100"></span>
+    </div>
+  )
+}
+
+export function TextInput(props) {
+  return (
+    <div class="ui icon input">
+      <input type="text" 
+        placeholder={props.placeholder} 
+        onChange={props.handleClick}
+        onClick={props.handleClick} />
     </div>
   )
 }

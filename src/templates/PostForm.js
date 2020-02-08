@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { Textarea } from '../components/Inputs'
 import { PostButton } from'../components/Buttons'
 
@@ -39,22 +40,10 @@ export default class PostForm extends Component {
 
   render() {
     return (
-      <div class="container-contact100" id="new-post-form">
-        <div class="wrap-contact100">
-          <form class="contact100-form validate-form" onSubmit={this.handleSubmit}>
-            <span class="contact100-form-title">
-              새로운 포스트
-            </span>
-            <div class="wrap-input100 validate-input">
-              <Textarea handleChange={this.handleContentsChange}/>
-              <span class="focus-input100"></span>
-            </div>
-            <div class="container-contact100-form-btn">
-              <PostButton buttonLabel="포스팅"/>
-            </div>
-          </form>
-        </div>
-      </div>
+      <form class="ui reply form" onSubmit={this.handleSubmit}>
+        <Textarea onChange={this.handleContentsChange}/>
+        <PostButton buttonLabel="포스트"/>
+      </form>
     )
   }
 }

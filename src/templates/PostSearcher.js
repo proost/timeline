@@ -3,35 +3,31 @@ import React, { Component } from 'react';
 
 export default class PostSearcher extends Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
             searchTerm: ''
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleTextChange = this.handleTextChange.bind(this);
-        this.handleClear = this.handleClear.bind(this);
+        }
+
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleTextChange = this.handleTextChange.bind(this)
+        this.handleClear = this.handleClear.bind(this)
     };
 
     handleTextChange(e){
-        let self = this;
-        self.setState({
+        this.setState({
             searchTerm: e.target.value
         });
     };
 
     handleSubmit(e){
-        let self = this;
-        // eslint-disable-next-line
-        if (e.keyCode == 13 || e.type == "click") {
-            self.props.onPostSearch(self.state.searchTerm);
+        if (e.keyCode === 13 || e.type === "click") {
+            this.props.onPostSearch(this.state.searchTerm);
         };
     }
 
     handleClear(e){
-        let self = this;
-        // eslint-disable-next-line
-        self.setState({ searchTerm: '' });
-        self.props.onPostSearch(self.state.searchTerm);
+        this.setState({ searchTerm: '' });
+        this.props.onPostSearch(this.state.searchTerm);
     }
 
     render(){
@@ -51,6 +47,4 @@ export default class PostSearcher extends Component {
         </div>
         );
     }
-
-
 }
