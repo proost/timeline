@@ -38,3 +38,13 @@ export function TextInput(props) {
     </div>
   )
 }
+
+export function SearchUser(props) {
+  return (
+    <div class="ui fluid left icon input">
+      <input type="email" placeholder={props.placeholder}/>
+        <i aria-hidden="true" class="users icon"></i>
+      <button class="ui button">찾기</button>
+    </div>
+  )
+}

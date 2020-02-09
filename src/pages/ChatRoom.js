@@ -4,7 +4,6 @@ import BoardRouter  from '../BoardRouter';
 import ErrorHandler from '../pages/Error'
 import MenuBar from '../templates/Header';
 
-import '../styles/postlist.css';
 import PostList from '../templates/PostList';
 import { LeftLabeldButton, RightLabeldButton } from '../components/Buttons';
 
@@ -33,7 +32,7 @@ export default class ChatRoom extends Component {
         prevLink: response.prevLink
       });
     } catch (error) {
-      this.setState({ error: error })
+      this.setState({ error: null })
     }
   };
 
@@ -72,20 +71,18 @@ export default class ChatRoom extends Component {
         <div class="container">
           <div class="row">
             <div class="col-lg-8 offset-lg-2">
-              <PostList
-                posts={this.state.posts}
-                />
+              <PostList posts={this.state.posts}/>
             </div>
           </div>
-          <div class="row">
-            <div class="page-button">
-                <LeftLabeldButton
-                  buttonLabel="이전 포스트들"
-                  onClick={this.handlePreviousPage}/>
-                <RightLabeldButton
-                  buttonLabel="다음 포스트들"
-                  onClick={this.handleNextPage}/>
-            </div>
+          <div class="row mt-5">
+            <div class="offset-lg-4">
+              <LeftLabeldButton
+                buttonLabel="이전 포스트들"
+                onClick={this.handlePreviousPage}/>
+              <RightLabeldButton
+                buttonLabel="다음 포스트들"
+                onClick={this.handleNextPage}/>
+           </div>
           </div>
         </div>
       </div>

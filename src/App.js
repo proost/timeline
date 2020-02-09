@@ -1,5 +1,4 @@
 import  React, { Component } from  'react'
-import './styles/board.css'
 import { BrowserRouter,Route } from  'react-router-dom'
 import ChatRoom from './pages/ChatRoom'
 import Login from './pages/Login'

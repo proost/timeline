@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import BoardRouter  from '../BoardRouter'
 import Post from './Post'
 
-import '../styles/postlist.css'
 import PostForm from './PostForm';
 
 const boardRouter = new BoardRouter();
