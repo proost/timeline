@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
 export function Textarea(props) {
   return (
@@ -48,3 +49,41 @@ export function SearchUser(props) {
     </div>
   )
 }
+
+const StyledInput = styled.input`
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  margin:0;
+`;
+
+export const SignupInput = styled(StyledInput)`
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  padding: .8em .5em;
+  border-radius: 2px;
+  &:hover {
+    background: #fff
+  }
+`;
+
+export const SubmitInput = styled(StyledInput)`
+  background: rgba(148,186,101,0.7);
+  box-shadow: 0 3px 0 0;
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  line-height: 1.6em;
+  margin: 2em 0 0;
+  outline: none;
+  padding: .8em 0;
+  text-shadow: 0 1px #68B25B;
+  &:hover {
+    background: rgba(148,175,101,1);
+    text-shadow:0 1px 3px;
+  }
+`;
+

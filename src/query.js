@@ -16,3 +16,13 @@ const GET_POSTS = gql`
       }
     }
   }`
+
+const GET_USER = gql`
+  query GetUser($email: String, $password: String) {
+    user(email: $email, password: $password) {
+      email
+      name
+      id
+    }
+  } 
+`
