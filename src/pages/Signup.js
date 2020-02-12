@@ -51,7 +51,7 @@ export default class Signup extends React.Component {
           <EmailForm onChange={this.handleInputChange}/>
           <PasswordForm onChange={this.handleInputChange}/>
           <ConfirmPasswordForm onChange={this.handleInputChange}/>
-          <TextForm onChange={this.handleInputChange}/>
+          <TextForm onChange={this.handleInputChange} label="이름"/>
           <SignupSubmitForm/>
       </Form>
     )

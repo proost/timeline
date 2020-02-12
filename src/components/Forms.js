@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { P } from './InlineTag';
+import { P, Label } from './InlineTag';
 import { SignupInput, SubmitInput } from './Inputs';
 
 export const StyledForm = styled.form`
+  font-size: 10px;
   background: #fff;
   padding: 4em 4em 2em;
   max-width: 400px;
@@ -21,7 +22,8 @@ export function Form({ children }) {
 export function EmailForm(props) {
   return (
     <P>
-      <SignupInput name="email" type="email" onChange={props.onChange} placeholder="이메일을 입력해주세요"/>
+      <Label for="email">이메일</Label>
+      <SignupInput name="email" type="email" onChange={props.onChange}/>
     </P>
   )
 }
@@ -29,7 +31,8 @@ export function EmailForm(props) {
 export function PasswordForm(props) {
   return (
     <P>
-      <SignupInput name="password" type="password" onChange={props.onChange} placeholder="비밀번호를 입력해주세요"/>
+      <Label for="password">비밀번호</Label>
+      <SignupInput name="password" type="password" onChange={props.onChange}/>
     </P>
   )
 }
@@ -37,7 +40,8 @@ export function PasswordForm(props) {
 export function ConfirmPasswordForm(props) {
   return (
     <P>
-      <SignupInput name="confirm_password" type="password" onChange={props.onChange} placeholder="비밀번호 확인"/>
+      <Label for="confirm_password">비밀번호 확인</Label>
+      <SignupInput name="confirm_password" type="password" onChange={props.onChange}/>
     </P>
   )
 }
@@ -53,7 +57,8 @@ export function SignupSubmitForm() {
 export function TextForm(props) {
   return (
     <P>
-      <SignupInput name="text" type="text" onChange={props.onChange} placeholder="이름을 입력하세요"/>
+      <Label for="text">{props.label}</Label>
+      <SignupInput name="text" type="text" onChange={props.onChange}/>
     </P>
   )
 }

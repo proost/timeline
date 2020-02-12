@@ -5,6 +5,7 @@ import { TextInput, SearchUser } from '../components/Inputs'
 import { SearchButton } from '../components/Buttons'
 import { MenuDropdown } from '../components/Dropdown'
 import { Button, Modal } from 'semantic-ui-react'
+import List from './List';
 
 export default class MenuBar extends React.Component { 
   constructor(props) {
@@ -16,7 +17,8 @@ export default class MenuBar extends React.Component {
       },
       searchTerm: '',
       isOpen: false,
-      invitationTarget: ''
+      invitationTarget: '',
+      memberList: []
     }
 
     this.handleSearchBar = this.handleSearchBar.bind(this)
@@ -61,7 +63,7 @@ export default class MenuBar extends React.Component {
           </div>
           <div class="item">
             <Button inverted onClick={this.handleModal}>
-            초대하기
+              멤버
             </Button>
             <Modal
               open={this.state.isOpen}
@@ -80,6 +82,9 @@ export default class MenuBar extends React.Component {
                 <form onSubmit={this.invite}>
                   <SearchUser placeholder="이메일을 입력하세요"/>
                 </form>
+                <div role="list" class="ui relaxed list">
+                  <List items={this.state.memberList}/>
+                </div>
               </Modal.Content>
               <Modal.Actions>
                 <Button onClick={this.handleModal} negative>
